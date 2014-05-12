@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Nome do Serviço</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+		<link rel="stylesheet" type="text/css" href="../vendors/bootstrap-3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+		<script src="../vendors/jQuery/jquery-2.1.0.min.js"></script>
+		<script src="../vendors/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+
+		<style>
+			#resultado {
+				display: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- logo -->
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-3">
+					<img src="../img/logo-detran.png" class="img-responsive">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Trânsito<br><small>Consulta Pontuação</small></h2>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<!-- formulario -->
+		<div class="container" id="frmConsulta">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form" role="form">
+
+						<!-- identidade -->
+						<div class="form-group">
+							<label for="f_identidade" class="control-label">Identidade</label>
+							<input type="number" class="form-control" id="f_identidade">
+						</div>
+
+						<!-- cnh -->
+						<div class="form-group">
+							<label for="f_cnh" class="control-label">CNH</label>
+							<input type="number" class="form-control" id="f_cnh">
+						</div>
+
+						<!-- nome -->
+						<div class="form-group">
+							<label for="f_nome" class="control-label">Nome</label>
+							<input type="text" class="form-control" id="f_nome">
+						</div>
+
+						<!-- data de nascimento -->
+						<div class="form-group">
+							<label for="f_nascimento" class="control-label">Data de nascimento</label>
+							<input type="number" class="form-control" id="f_nascimento" placeholder="dd/mm/aaaa">
+						</div>
+
+						<!-- botões -->
+						<div class="form-group pull-right">
+							<button type="button" id="btnSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Consultar</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btnSubmit").click(function() {
+					$("#frmConsulta").hide();
+					//$.getJSON("http://dominio/pontuacao/consulta", $("#frmConsulta").serialize(), function(data) {
+					// popula dados no form e exibe
+					//	$("#resultado").show();
+					//});
+					$("#resultado").show();
+				});
+			});
+		</script>
+
+
+		<!-- resultado da consulta -->
+		<div class="container" id="resultado">
+			<div class="row">
+				<div class="col-sm-12">
+					<form class="form-horizontal" role="form">
+						<legend>Informações do condutor</legend>
+						<div class="form-group">
+							<label for="f_identidade" class="col-xs-7 control-label">Identidade</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">7842394562</p>
+							</div>
+						</div>
+
+						<legend>Informações da CNH</legend>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Modelo</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">Nova</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Número</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">478362767</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">UF</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">RS</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Categoria</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">B</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Validade</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">03/03/2015</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Primeira habilitação</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">23/07/2003</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Situação</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">NORMAL</p>
+							</div>
+						</div>
+
+						<legend>Total de pontos</legend>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Confirmados</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">14</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-7 control-label">Aguardando confirmação</label>
+							<div class="col-xs-5">
+								<p class="form-control-static">0</p>
+							</div>
+						</div>
+
+						<br>
+						<div class="form-group pull-right">
+							<div class="col-xs-12">
+								<button type="button" id="btnNovaConsulta" class="btn btn-primary">Nova consulta</button>
+							</div>
+						</div>
+						<br>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btnNovaConsulta").click(function() {
+					$("#resultado").hide();
+					$("#frmConsulta").show();
+				});
+			});
+		</script>
+
+
+
+
+
+	</body>
+</html>

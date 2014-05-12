@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Nome do Serviço</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <link rel="stylesheet" type="text/css" href="../vendors/bootstrap-3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+        <script src="../vendors/jQuery/jquery-2.1.0.min.js"></script>
+        <script src="../vendors/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+
+        <style>
+            #lista, #detalhe {
+                display: none;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- logo -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Pesquisa<br><small>Exemplo de pesquisa</small></h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+        
+        
+
+        <!-- formulario -->
+        <div class="container" id="frmConsulta">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form" role="form">
+
+                        <!-- campo de pesquisa -->
+                        <div class="form-group">
+                            <label for="f_pesquisa" class="control-label">Label</label>
+                            <input type="text" class="form-control" id="f_pesquisa">
+                        </div>
+
+                        <!-- botões -->
+                        <div class="form-group pull-right">
+                            <button type="button" id="btnSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Consultar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#btnSubmit").click(function() {
+                    // aqui vai o código que acessa o backend
+                    $("#frmConsulta").hide();
+                    $("#lista").show();
+                });
+            });
+        </script>
+
+
+        
+        
+        
+        <!-- resultado da consulta -->
+        <div class="container" id="lista">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-primary" id="btnNovaConsulta">Nova pesquisa</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="list-group">
+						
+                        <a href="#" class="list-group-item click" data-id="123456">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+                        <a href="#" class="list-group-item click" data-id="987654">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+                        <a href="#" class="list-group-item click" data-id="2345">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+                        <a href="#" class="list-group-item click" data-id="3546">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+                        <a href="#" class="list-group-item click" data-id="43768">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+                        <a href="#" class="list-group-item click" data-id="54122">
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                            <p class="list-group-item-text">kjhsfg kjhg dskfjhg aksjg fkjag sdkjfg kahsddkjhfg akjhdg fkjhag kdhjfg kahg sdkfhg ka</p>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#btnNovaConsulta").click(function() {
+                    $("#lista").hide();
+                    $("#frmConsulta").show();
+                });
+                $(".click").click(function(e) {
+                    e.preventDefault();
+					$(".list-group-item").removeClass("active");
+					$(this).addClass("active");
+                    
+					// busca os dados no backend e popula no formulario
+					$("#f_campo_1").empty();
+					$("#f_campo_1").append($(this).data("id"));
+					
+                    $("#lista").hide();
+                    $("#detalhe").show();
+                });
+            });
+        </script>
+
+
+        
+        
+        
+
+
+
+
+        <!-- detalhe -->
+        <div class="container" id="detalhe">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="form-horizontal" role="form">
+						
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">Campo 1</label>
+                            <div class="col-xs-8">
+                                <p class="form-control-static" id="f_campo_1">7842394562</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label">Campo 2</label>
+                            <div class="col-xs-8">
+                                <p class="form-control-static">XXX XXX XXX</p>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-4">
+                                <button type="button" id="btnVoltar" class="btn btn-primary">Voltar para a lista</button>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#btnVoltar").click(function() {
+                    $("#detalhe").hide();
+                    $("#lista").show();
+                });
+            });
+        </script>
+
+
+
+
+    </body>
+</html>

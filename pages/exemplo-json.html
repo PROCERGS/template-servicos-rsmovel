@@ -41,13 +41,7 @@
 
 
 				<div class="col-xs-12">
-					<table id="lista_cidades" class="table table-bordered table-hover">
-						<thead>
-							<tr><th>Nome da cidade</th></tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+					<ul id="lista_cidades" class="list-group"></ul>
 				</div>
 
 			</div>
@@ -63,9 +57,9 @@
 						data: {
 							q : $("#f_busca").val()
 						}, success: function( response ) {
-							$("#lista_cidades tbody").empty();
+							$("#lista_cidades").empty();
 							$.each(response, function(i, item) {
-								$("#lista_cidades tbody:last").append("<tr><td>" + item + "</td></tr>");
+								$("#lista_cidades").append("<li class='list-group-item'>" + item + "</li>");
 							});
 						}
 					});

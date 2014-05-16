@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Nome do Serviço</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+		<link rel="stylesheet" type="text/css" href="../vendors/bootstrap-3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+		<script src="../vendors/jQuery/jquery-2.1.0.min.js"></script>
+		<script src="../vendors/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>Cidades<br><small>Listagem das cidades do mundo</small></h2>
+				</div>
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-xs-12">
+					<form class="form-inline" role="form">
+						<div class="input-group">
+							<input type="text" class="form-control" id="f_busca">
+							<span class="input-group-btn">
+								<button id="btnBusca" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
+					</form>
+					<br>
+				</div>
+
+
+				<div class="col-xs-12">
+					<table id="lista_cidades" class="table table-bordered table-hover">
+						<thead>
+							<tr><th>Nome da cidade</th></tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btnBusca").click(function() {
+					$.ajax({
+						url: "http://gd.geobytes.com/AutoCompleteCity",
+						dataType: "jsonp",
+						data: {
+							q : $("#f_busca").val()
+						}, success: function( response ) {
+							$("#lista_cidades tbody").empty();
+							$.each(response, function(i, item) {
+								$("#lista_cidades tbody:last").append("<tr><td>" + item + "</td></tr>");
+							});
+						}
+					});
+				});
+			});
+		</script>
+
+
+
+
+
+	</body>
+</html>
